@@ -7,9 +7,12 @@ use Faker\Generator as Faker;
 
 $factory->define(Product::class, function (Faker $faker) {
     return [
-      'name' => $faker->word,
+      'name' => substr($faker->sentence(3),0,-1) , //substr para quitar el ultimo caracter de una palabra
       'description' => $faker->sentence(10),
       'long_description' => $faker->text,
-      'price' => $faker->randomfloat(2, 5, 150)
+      'price' => $faker->randomfloat(2, 5, 150),
+       
+      'category_id' => $faker->numberBetween(1,5)
+
     ];
 });
