@@ -34,7 +34,8 @@ Route::middleware(['auth', 'admin'])->prefix('')->group(function () {
     //images con productos
     Route::get('Admin/product/{id}/images', 'ImageController@index');//listar
     Route::post('Admin/product/{id}/images', 'ImageController@store');//crear
-    Route::delete('Admin/product/{id}/images', 'ImageController@destroy');//eliminar    
+    Route::delete('Admin/product/{id}/images', 'ImageController@destroy');//eliminar  
+    Route::get('Admin/product/{id}/images/select/{image}', 'ImageController@select');//destacar   
 
 
 

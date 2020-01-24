@@ -19,9 +19,10 @@ class ImageController extends Controller
     {
         //
         $product = Product::find($id);
-        $images = $product->images;
+        $images = $product->images()->orderBy('featured', 'desc')->get();
         return view('Admin.product.images.index')->with(compact('product','images'));
     }
+
 
     /**
      * Show the form for creating a new resource.
@@ -109,7 +110,7 @@ class ImageController extends Controller
         }else {
             $fullPath = public_path() . '/images/products/' . $productImage->image;
             $deleted = File::delete($fullPath);
-        }
+        }                                                       
         //eliminar el resgistro en la bd
             if($deleted){
                 $productImage->delete();
@@ -117,4 +118,19 @@ class ImageController extends Controller
             return back();
         
     }
+ 
+    public function select($id, $image)
+     {
+        //  ProductImage::where('product_id', $id)->update([
+        //      'featured'=> false
+        //  ]);
+         $productImage = ProductImage::find($image);
+         $productImage->featured = true;
+         $productImage->save();
+         return back();
+     }
+
+    
+
+
 }
