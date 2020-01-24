@@ -18,6 +18,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements('id');
             $table->string('name');
             $table->string('description');
+            $table->boolean('condicion')->default(1);
             $table->text('long_description')->nullable();
             $table->float('price');
             

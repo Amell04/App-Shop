@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
+use App\Product;
+
 
 class CreateProductImagesTable extends Migration
 {
@@ -21,8 +23,8 @@ class CreateProductImagesTable extends Migration
 
             $table->timestamps();
 
-            $table->unsignedBigInteger('product_id')->nullable();
-           $table->foreign('product_id')->references('id')->on('products');
+            $table->unsignedBigInteger('product_id');
+          $table->foreign('product_id')->references('id')->on('products');
         });
     }
 
