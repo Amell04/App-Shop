@@ -29,13 +29,12 @@
                    <input type="hidden" name="image_id" value="{{ $image->id }}">
                     <button type="submit" class="btn btn-danger btn-round">Eliminar Imagen</button>
                     @if ($image->featured)
-                    <button type="button" class="btn btn-info btn-round" rel="tooltip" title="imagen destacada de este producto">
-                        <span class="glyphicon glyphicon-heart">Destacada</span>
+                    <button  class="btn btn-primary btn-fab btn-fab-mini btn-round" rel="tooltip" title="imagen destacada de este producto">
+                        <i class="material-icons">favorite</i>
                         <button>
-                        <i >favorite</i>
                     @else
-                    <a href="{{ url('Admin/product/'.$product->id.'/images/select/'.$image->id) }}">
-                        <i >favorite</i>
+                    <a type="button" href="{{ url('Admin/product/'.$product->id.'/images/select/'.$image->id) }}">
+                        <i class="material-icons">favorite</i>
                     @endif
                         
                    </form>

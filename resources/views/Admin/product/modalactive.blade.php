@@ -1,6 +1,6 @@
 <div class="modal fade modal-slide-in-right" aria-hidden="true"
 role="dialog" tabindex="-1" id="modal-activate-{{$product->id}}">
-	{{ Form::Open(array('action'=>array('ProductController@activar',$product->id),'method'=>'PUT'))}}
+	{{ Form::Open(array('action'=>array('Admin\ProductController@activar',$product->id),'method'=>'PUT'))}}
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">

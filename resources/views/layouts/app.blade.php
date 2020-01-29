@@ -11,8 +11,23 @@
     <title>{{ config('app.name', 'App Shop') }}</title>
 
     <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-    <script src="{{ asset('js/bootstrap.js') }}" defer></script>
+    <script src="{{ asset('/aseets/js/app.js') }}" defer></script>
+
+    <!--Scripts de Creative-->
+    <script src="{{ asset('/aseets/js/jquery.min.js')}}" defer></script>
+	<script src="{{ asset('/aseets/js/bootstrap.min.js')}}" defer></script>
+	<script src="{{ asset('/aseets/js/material.min.js')}}" defer></script>
+
+	<!--  Plugin for the Sliders, full documentation here: http://refreshless.com/nouislider/ -->
+    <script src="{{ asset('/aseets/js/nouislider.min.js')}}"></script>
+
+	<!--  Plugin for the Datepicker, full documentation here: http://www.eyecon.ro/bootstrap-datepicker/ -->
+    <script src="{{ asset('/aseets/js/bootstrap-datepicker.js')}}"></script>
+
+	<!-- Control Center for Material Kit: activating the ripples, parallax effects, scripts from the example pages etc -->
+    <script src="{{ asset('/aseets/js/material-kit.js')}}"></script>
+
+
 
     <!-- Fonts -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
@@ -21,22 +36,26 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
 
 
+
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet">
+    
+    <link href="{{ asset('/aseets/css/bootstrap.min.css') }}" rel="stylesheet">
+
+    <!-- CSS Files Creative -->
+    <link href="{{ asset('/aseets/css/material-kit.css') }}" rel="stylesheet">
+
 
 
 </head>
 <body>
     <div id="app">
+        <div class="header header-filter" style="background-image: url('../aseets/img/city.jpg'); background-size: cover; background-position: top center;">
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
@@ -45,7 +64,7 @@
                     </ul>
 
                     <!-- Right Side Of Navbar -->
-                    <ul class="navbar-nav ml-auto">
+                    <ul  class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
@@ -61,14 +80,22 @@
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
-
+                                <ul class="">
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                  
-                                    <a class="dropdown-item" href="{{ route('logout') }}"
-                                       onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                        {{ __('Logout') }}
-                                    </a>
+                                   
+                                        <li> <a class="dropdown-item" href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                          document.getElementById('logout-form').submit();">
+                                             {{ __('Logout') }}
+                                         </a>
+                                        </li>
+                                        <li>
+                                            <a href="{{url('/home') }}">Dashboard</a>
+                                        </li>
+            
+                                    </ul>
+                                   
+                                    
                                     @if (auth()->user()->admin)
                                     <li>
                                         <a  href="{{url('/Admin/product/') }}" class="btn btn-primary btn-round">Gestionar Productos</a> 
