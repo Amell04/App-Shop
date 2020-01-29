@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateCartDSTable extends Migration
+class CreateCartDetailsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,20 +13,18 @@ class CreateCartDSTable extends Migration
      */
     public function up()
     {
-        Schema::create('cart_d_s', function (Blueprint $table) {
+        Schema::create('cart_details', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->float('quantity');//cantidades em numeros decimales 
+            $table->integer('quantity');//cantidades em numeros decimales 
             $table->integer('discount')->default(0);//descuento en %
-            $table->string('status');//active,pending,approved,cancelled,finished
 
             //cart_id(FK) header 
-            $table->unsignedBigInteger('cart_id')->nullable();
+            $table->unsignedBigInteger('cart_id');
             $table->foreign('cart_id')->references('id')->on('carts');
             
             //products_id(FK) products
-            $table->unsignedBigInteger('product_id')->nullable();
+            $table->unsignedBigInteger('product_id');
             $table->foreign('product_id')->references('id')->on('products');
-           
             $table->timestamps();
         });
     }
@@ -38,6 +36,6 @@ class CreateCartDSTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('cart_d_s');
+        Schema::dropIfExists('cart_details');
     }
 }

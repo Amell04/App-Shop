@@ -15,18 +15,16 @@ class CreateCartsTable extends Migration
     {
         Schema::create('carts', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->date('order_ date')->nullable();
-            $table->date('arriver_ date')->nullable();
-            
-            $table->string('status');//active,pending,approved,cancelled,finished
-
-
-            //user_id(FK) customer
+            $table->date('order_date');
+            $table->date('arrived_date');
+            $table->date('status'); //active,Pending,Approved,Cancelled,Finished
+            //user_id para saber a que cliente le pertenece la compra
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-           
-           $table->timestamps();
+
+            $table->timestamps();
         });
+
     }
 
     /**
