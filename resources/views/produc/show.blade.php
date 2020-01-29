@@ -51,11 +51,15 @@
                                     </div>
                             </div>
                             
-                        </div>
                         <div class="name text-center">
                         <h3 class="title text-center">{{$product->name}}</h3>
                         <h6>{{$product->category->name}}</h6>
                         </div>
+                        @if (session('notification'))
+                            <div class="alert alert-success" role="alert">
+                                {{ session('notification') }}  
+                            </div>
+                            @endif
                     </div>
                 </div>
                 <div class="description text-center">

@@ -21,6 +21,10 @@ Route::get('product', 'TestController@index');
 Route::get('product/{id}', 'ProductController@show');
 //Ruta de carrito de compras
 Route::post('/cart', 'CartDetailController@store');
+Route::delete('/cart', 'CartDetailController@destroy');//eliminar 
+
+//ruta para realizar ordenes
+Route::post('/order', 'CartController@update');
 
 
 Route::get('/home', 'HomeController@index')->name('home');

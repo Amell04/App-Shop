@@ -3,12 +3,29 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Product;
-use App\CartDetail;
 
-
-class CartDetailController extends Controller
+class CartController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
+    {
+        //
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
+    {
+        //
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -17,14 +34,7 @@ class CartDetailController extends Controller
      */
     public function store(Request $request)
     {
-        $CartD = new CartDetail();
-        $CartD->cart_id = auth()->user()->cart->id;
-        $CartD->product_id = $request->product_id;
-        $CartD->quantity = $request->quantity;
-        $CartD->save();
-        $notification = "El Producto se ha cargado con exito";
-        return back()->with(compact('notification'));
-
+        //
     }
 
     /**
@@ -56,9 +66,13 @@ class CartDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update()
     {
-        //
+        $cart = auth()->user()->cart;
+        $cart->status = 'Pending';
+        $cart->save();//Update
+        $notification = 'Tu pedido se ha registrado correctamente, te contactaremos via mail!';
+        return back()->with(compact('notification'));
     }
 
     /**
@@ -67,12 +81,8 @@ class CartDetailController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request)
+    public function destroy($id)
     {
-        $CartD = CartDetail::find($request->cart_detail_id);
-        if ($CartD->cart_id == auth()->user()->cart->id) 
-             $CartD->delete(); 
-
-        return back();
+        //
     }
-} 
+}
